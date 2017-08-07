@@ -38,7 +38,8 @@ program.command('sync-with-swagger')
 
 program.command('validate')
   .description('Validate Swagger file')
-  .action(function(filename, options) {
+  .option('-b, --basedir <dir>', 'The base directory to look for swagger')
+  .action(function(options) {
     var swagger = api.bundle(options);
     api.validate(swagger, function (error, result) {
       var isErrors = !_.isEmpty(result.errors);
